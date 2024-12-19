@@ -1,9 +1,19 @@
 [package]
-name = "thingy"
-version = "0.1.0"
+name = "lpg"
+authors = ["femboy.tv", "SylvanSerenity"]
+version = "0.2.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[profile.release]
+opt-level = "s" # Optimize for size and speed
+strip = true # Strip unused symbols
+lto = true # Link time size optimization
+codegen-units = 1 # Only use one codegen unit for best optimization
+
 [dependencies]
-image = "0.24.7"
+clap = { version = "4.5.23", features = ["derive"] } # CLI help
+image = "0.25.5" # Image resizing/overlaying
+indicatif = "0.17.9" # Progress bar
+rayon = "1.10.0" # Parallelism
